@@ -7,6 +7,13 @@
 //     console.log(data);
 //   });
 
+const input1 = document.querySelector("#input1");
+const input2 = document.querySelector("#input2");
+const input3 = document.querySelector("#input3");
+const select1 = document.querySelector("#select1");
+const select2 = document.querySelector("#select2");
+const select3 = document.querySelector("#select3");
+
 let api = [
   {
     id: 69,
@@ -1103,5 +1110,89 @@ let api = [
     Date: "25.03.2022",
   },
 ];
-
 console.log(api);
+
+let dollar = api.find(function (val) {
+  return val.Ccy == "USD";
+});
+let oneDollar = dollar.Rate;
+
+let rubl = api.find(function (val) {
+  return val.Ccy == "RUB";
+});
+let oneRubl = rubl.Rate;
+
+if (select1.value == "sum") {
+  input1.addEventListener("input", function () {
+    let input1Value = +input1.value;
+    // 1-inputni valuesi sum bo'lgan hol uchun
+    // 2-input un
+    if (select2.value == "rub" && select1.value == "sum") {
+      input2.value = "";
+      input2.value = `${(input1Value / oneRubl).toFixed(6)} Rubl`;
+    }
+    if (select2.value == "sum" && select1.value == "sum") {
+      input2.value = "";
+      input2.value = `${input1Value} Sum`;
+    }
+    if (select2.value == "usd" && select1.value == "sum") {
+      input2.value = "";
+      input2.value = `${(input1Value / oneDollar).toFixed(6)} $`;
+    }
+    // 3-input un
+    if (select3.value == "usd" && select1.value == "sum") {
+      input3.value = "";
+      input3.value = `${(input1Value / oneDollar).toFixed(6)} $`;
+    }
+    if (select3.value == "sum" && select1.value == "sum") {
+      input3.value = "";
+      input3.value = `${input1Value} Sum`;
+    }
+    if (select3.value == "rub" && select1.value == "sum") {
+      input3.value = "";
+      input3.value = `${(input1Value / oneRubl).toFixed(6)} Rubl`;
+    }
+    // 1-inputni valuesi rubl bo'lgan hol uchun
+    // 2-input un
+    if (select2.value == "rub" && select1.value == "rub") {
+      input2.value = `${input1Value} Rubl`;
+    }
+    if (select2.value == "sum" && select1.value == "rub") {
+      input2.value = `${input1Value * oneRubl} sum`;
+    }
+    if (select2.value == "usd" && select1.value == "rub") {
+      input2.value = `${((input1Value * oneRubl) / oneDollar).toFixed(6)} $`;
+    }
+    // 3-input un
+    if (select3.value == "usd" && select1.value == "rub") {
+      input3.value = `${((input1Value * oneRubl) / oneDollar).toFixed(6)} $`;
+    }
+    if (select3.value == "sum" && select1.value == "rub") {
+      input3.value = `${input1Value * oneRubl} sum`;
+    }
+    if (select3.value == "rub" && select1.value == "rub") {
+      input3.value = `${input1Value} Rubl`;
+    }
+    // 1-inputni valusi dollar bo'lgan hol uchun
+    // 2-input un
+    if (select2.value == "rub" && select1.value == "usd") {
+      input2.value = `${((input1Value * oneDollar) / oneRubl).toFixed(6)} Rubl`;
+    }
+    if (select2.value == "sum" && select1.value == "usd") {
+      input2.value = `${input1Value * oneDollar} sum`;
+    }
+    if (select2.value == "usd" && select1.value == "usd") {
+      input2.value = `${input1Value} $`;
+    }
+    // 3-input un
+    if (select3.value == "usd" && select1.value == "usd") {
+      input3.value = `${input1Value} $`;
+    }
+    if (select3.value == "sum" && select1.value == "usd") {
+      input3.value = `${input1Value * oneDollar} sum`;
+    }
+    if (select3.value == "rub" && select1.value == "usd") {
+      input3.value = `${((input1Value * oneDollar) / oneRubl).toFixed(6)} Rubl`;
+    }
+  });
+}
