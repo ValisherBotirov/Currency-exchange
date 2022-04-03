@@ -1,0 +1,42 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  padding: 50px;
+  background-color: rgb(198, 196, 194);
+  overflow: hidden;
+}
+
+.title {
+  color: #551010;
+  font-size: 40px;
+  text-align: center;
+  padding-top: 80px;
+}
+
+.grid__box {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.current {
+  height: 35px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  padding: 5px 40px;
+  border: none;
+}
+select {
+  height: 35px;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  outline: none;
+}
